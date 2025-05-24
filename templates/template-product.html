@@ -30,7 +30,7 @@
       }
 
       body {
-        padding: 5rem 5rem 10rem;
+        padding: 2rem 2rem;
         line-height: 1.7;
         font-family: 'Nunito Sans', sans-serif;
         color: #555;
@@ -40,12 +40,13 @@
 
       h1 {
         font-family: 'Megrim', sans-serif;
-        font-size: 6rem;
+        font-size: 5rem;
         color: white;
         transform: skewY(-5deg);
         text-align: center;
         position: relative;
         word-spacing: 3px;
+        margin-bottom: 2rem;
       }
 
       h1::before {
@@ -68,18 +69,21 @@
       }
 
       .product {
-        width: 60rem;
+        width: 80rem;
         margin: 0 auto;
-        margin-top: 9rem;
+        margin-top: 2rem;
         background: white;
         box-shadow: 0 3rem 6rem 1rem rgba(0, 0, 0, 0.2);
         position: relative;
+        border-radius: 1rem;
+        overflow: hidden;
       }
 
       .product__hero {
         position: relative;
-        height: 22rem;
+        height: 25rem;
         overflow: hidden;
+        background: linear-gradient(to right, #9be15d, #00e3ae);
       }
 
       .product__hero::before {
@@ -98,6 +102,7 @@
       .product__emoji {
         font-size: 15rem;
         position: absolute;
+        opacity: 0.8;
       }
 
       .product__emoji--1 {
@@ -149,25 +154,31 @@
 
       .product__organic {
         position: absolute;
-        top: -4rem;
-        right: -4rem;
+        top: 1rem;
+        right: 1rem;
         z-index: 1000;
-        height: 11rem;
-        width: 11rem;
+        height: 9rem;
+        width: 9rem;
         background-image: linear-gradient(to bottom, #9be15d, #00e3ae);
         border-radius: 50%;
         transform: rotate(15deg);
-        box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.4);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
         display: flex;
         align-items: center;
         justify-content: center;
       }
 
+      .product__organic.not-organic {
+        display: none;
+      }
+
       .product__organic h5 {
         font-weight: 900;
         text-transform: uppercase;
-        font-size: 1.8rem;
+        font-size: 1.6rem;
         color: white;
+        text-align: center;
+        padding: 0 0.5rem;
       }
 
       .product__back:link,
@@ -175,7 +186,7 @@
         position: absolute;
         top: 2rem;
         left: 2rem;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: 700;
         text-transform: uppercase;
         text-decoration: none;
@@ -184,7 +195,7 @@
         background-color: white;
         box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.3);
         border-radius: 100rem;
-        padding: 0 2rem;
+        padding: 1rem 2rem;
         transition: all 0.3s;
         display: flex;
         align-items: center;
@@ -193,70 +204,113 @@
       .product__back:hover,
       .product__back:active {
         background-color: #79e17b;
+        color: white;
       }
 
       .product__name {
         background: linear-gradient(to bottom, #9be15d, #00e3ae);
-        padding: 1rem;
+        padding: 1.5rem;
+        text-align: center;
+      }
+
+      .product__name h2 {
         font-family: 'Megrim', sans-serif;
-        font-size: 4rem;
+        font-size: 6rem;
         color: white;
         text-align: center;
-        word-spacing: 2px;
+        text-shadow: 0 0.2rem 0.4rem rgba(0, 0, 0, 0.1);
       }
 
       .product__details {
-        background-color: #eee;
-        padding: 4rem 6rem;
-        font-size: 1.9rem;
+        background-color: #f9f7f6;
+        padding: 3rem;
         display: grid;
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 1.5rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+
+      .product__detail {
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+      }
+
+      .product__detail--price {
+        font-weight: 900;
+        font-size: 2.4rem;
+        color: #333;
+        grid-column: 1 / -1;
+        justify-content: center;
+        padding: 1.5rem;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+      }
+
+      .product__detail--organic {
+        font-weight: 900;
+        text-transform: uppercase;
+        font-size: 1.8rem;
+        background-image: linear-gradient(to right, #9be15d, #00e3ae);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        grid-column: 1 / -1;
+        justify-content: center;
+      }
+
+      .product__detail--organic.not-organic {
+        display: none;
+      }
+
+      .product__detail--not-organic {
+        display: none;
       }
 
       .product__description {
-        padding: 5rem 6rem;
-        font-size: 1.6rem;
-        line-height: 1.8;
+        padding: 3rem;
+        font-size: 1.8rem;
+        line-height: 1.6;
+        color: #666;
+        background: white;
+        border-top: 1px solid #eee;
       }
 
-      .product__link:link,
-      .product__link:visited {
-        display: block;
+      .btn {
+        display: inline-block;
         background-color: #79e17b;
         color: white;
-        font-size: 1.6rem;
-        font-weight: 700;
+        font-size: 1.8rem;
+        font-weight: 900;
         text-transform: uppercase;
         text-decoration: none;
-        padding: 1.5rem;
-        text-align: center;
-        transform: scale(1.07) skewX(-20deg);
-        box-shadow: 0 2rem 6rem rgba(0, 0, 0, 0.2);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        padding: 1.5rem 3rem;
+        border-radius: 0.5rem;
         transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        text-align: center;
+        margin-top: 2rem;
       }
 
-      .product__link:hover,
-      .product__link:active {
+      .btn:hover {
         background-color: #9be15d;
-        transform: scale(1.1) skewX(-20deg);
+        transform: translateY(-2px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
       }
 
-      .product__link span {
-        transform: skewX(20deg);
+      .btn:active {
+        transform: translateY(0);
       }
 
       .emoji-left {
-        font-size: 2rem;
-        margin-right: 1rem;
+        font-size: 2.4rem;
       }
 
       .emoji-right {
-        font-size: 2rem;
-        margin-left: 1rem;
+        font-size: 3rem;
       }
 
       .not-organic {
@@ -287,22 +341,19 @@
         </div>
         <h2 class="product__name">{%PRODUCTNAME%}</h2>
         <div class="product__details">
-          <p><span class="emoji-left">🌍</span> From {%FROM%}</p>
-          <p><span class="emoji-left">❤️</span> {%NUTRIENTS%}</p>
-          <p><span class="emoji-left">📦</span>{%QUANTITY%}</p>
-          <p><span class="emoji-left">🏷</span> {%PRICE%}</p>
+          <p class="product__detail"><span class="emoji-left">🌍</span> From {%FROM%}</p>
+          <p class="product__detail"><span class="emoji-left">❤️</span> {%NUTRIENTS%}</p>
+          <p class="product__detail"><span class="emoji-left">📦</span> {%QUANTITY%}</p>
+          <p class="product__detail--price"><span class="emoji-left">💰</span> ${%PRICE%}</p>
+          <p class="product__detail--organic {%NOT_ORGANIC%}"><span class="emoji-left">🌿</span> Organic Product</p>
         </div>
   
-        <a href="#" class="product__link">
-          <span class="emoji-left">🛒</span>
-          <span>Add to shopping card {%PRICE%}</span>
-        </a>
+        <a href="/add-to-cart?id={%ID%}" class="btn">Add to Cart</a>
   
         <p class="product__description">
           {%DESCRIPTION%}
         </p>
       </figure>
-      
     </div>
   </body>
 </html>

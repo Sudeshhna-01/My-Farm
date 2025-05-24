@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Megrim|Nunito+Sans:400,900"
+      rel="stylesheet"
+    />
+    <link
+      rel="icon"
+      href="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/apple/155/ear-of-maize_1f33d.png"
+    />    
+
+    <title>NODE FARM - Cart</title>
+
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: inherit;
+      }
+
+      html {
+        font-size: 62.5%;
+        box-sizing: border-box;
+      }
+
+      body {
+        padding: 5rem 5rem 10rem;
+        line-height: 1.7;
+        font-family: 'Nunito Sans', sans-serif;
+        color: #555;
+        min-height: 100vh;
+        background: linear-gradient(to bottom right, #9be15d, #00e3ae);
+      }
+
+      h1 {
+        font-family: 'Megrim', sans-serif;
+        font-size: 6rem;
+        color: white;
+        transform: skewY(-5deg);
+        text-align: center;
+        position: relative;
+        word-spacing: 3px;
+        margin-bottom: 4rem;
+      }
+
+      h1::before {
+        content: '';
+        display: block;
+        height: 65%;
+        width: 49%;
+        position: absolute;
+        top: 105%;
+        left: 50%;
+        background: linear-gradient(to bottom, #9be15d, #00e3ae);
+        opacity: 0.8;
+        z-index: -1;
+        transform: skewY(370deg) translate(-50%, -50%);
+      }
+
+      .container {
+        width: 95rem;
+        margin: 0 auto;
+      }
+
+      .cart-container {
+        background: white;
+        box-shadow: 0 2rem 6rem 1rem rgba(0, 0, 0, 0.15);
+        border-radius: 1rem;
+        overflow: hidden;
+      }
+
+      .cart-header {
+        background: linear-gradient(to right, #9be15d, #00e3ae);
+        padding: 2rem 4rem;
+        color: white;
+      }
+
+      .cart-header h2 {
+        font-size: 2.4rem;
+        font-weight: 900;
+      }
+
+      .cart-items {
+        padding: 4rem;
+      }
+
+      .cart-item {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 3rem;
+        padding: 2rem;
+        border-bottom: 1px solid #eee;
+        transition: all 0.3s;
+      }
+
+      .cart-item:hover {
+        background-color: #f9f9f9;
+      }
+
+      .cart-item:last-child {
+        border-bottom: none;
+      }
+
+      .cart-item__emoji {
+        font-size: 4rem;
+        background: #f7f7f7;
+        width: 8rem;
+        height: 8rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .cart-item__details {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .cart-item__name {
+        font-size: 2rem;
+        font-weight: 900;
+        color: #333;
+      }
+
+      .cart-item__price {
+        font-size: 1.8rem;
+        color: #666;
+      }
+
+      .cart-item__quantity {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .quantity-btn {
+        background: none;
+        border: 1px solid #ddd;
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        font-size: 1.6rem;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .quantity-btn:hover {
+        background: #f7f7f7;
+      }
+
+      .quantity-number {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: #333;
+      }
+
+      .cart-item__remove {
+        color: #ff6b6b;
+        font-size: 1.4rem;
+        text-decoration: none;
+        transition: all 0.3s;
+      }
+
+      .cart-item__remove:hover {
+        color: #ff5252;
+      }
+
+      .cart-summary {
+        background: #f9f9f9;
+        padding: 4rem;
+        border-top: 1px solid #eee;
+      }
+
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 2.4rem;
+        font-weight: 900;
+        color: #333;
+        margin-bottom: 3rem;
+      }
+
+      .cart-actions {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #79e17b;
+        color: white;
+        font-size: 1.6rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        text-decoration: none;
+        padding: 1.5rem 3rem;
+        border-radius: 0.5rem;
+        transition: all 0.3s;
+        border: none;
+        cursor: pointer;
+        flex: 1;
+        text-align: center;
+      }
+
+      .btn:hover {
+        background-color: #9be15d;
+        transform: translateY(-2px);
+      }
+
+      .btn:active {
+        transform: translateY(0);
+      }
+
+      .btn--secondary {
+        background-color: #f7f7f7;
+        color: #333;
+      }
+
+      .btn--secondary:hover {
+        background-color: #eee;
+      }
+
+      .empty-cart {
+        text-align: center;
+        padding: 8rem 4rem;
+      }
+
+      .empty-cart__emoji {
+        font-size: 8rem;
+        margin-bottom: 2rem;
+      }
+
+      .empty-cart__text {
+        font-size: 2rem;
+        color: #666;
+        margin-bottom: 3rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1>🛒 Your Cart</h1>
+
+      <div class="cart-container">
+        <div class="cart-header">
+          <h2>Shopping Cart</h2>
+        </div>
+
+        <div class="cart-items">
+          {%CART_ITEMS%}
+        </div>
+
+        <div class="cart-summary">
+          <div class="cart-total">
+            <span>Total</span>
+            <span>${%CART_TOTAL%}</span>
+          </div>
+          <div class="cart-actions">
+            <a href="/" class="btn btn--secondary">Continue Shopping</a>
+            <a href="/place-order" class="btn">Place Order</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html> 
